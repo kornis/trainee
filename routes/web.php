@@ -15,3 +15,9 @@ Route::get('/',[
 'as' => 'index',
 'uses' => 'User_controller@index'
 ]);
+
+Route::post('/registrarse',
+[
+	'uses' => 'User_controller@create',
+	'as' => 'user.create'
+]);
