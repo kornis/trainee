@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ArticlesMigration extends Migration
+class CommentMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class ArticlesMigration extends Migration
      */
     public function up()
     {
-        Schema::create('tb_articles', function(Blueprint $table){
+        Schema::create('tb_comments', function(Blueprint $table){
 
-            $table->increments('id_article');
-            $table->string('title_article');
-            $table->text('content_article');
+            $table->increments('id_comment');
+            $table->string('title_comment');
+            $table->text('content_comment');
             $table->integer('user_id')->unsigned();
+            $table->integer('article_id')->unsigned();
+
             $table->foreign('user_id')->references('id_user')->on('tb_users')->onDelete('cascade');
-            
-            $table->timestamps();
+            $table->foreign('article_id')->references('id_article')->on('tb_articles')->onDelete('cascade');
+           
+               $table->timestamps();
         });
     }
 
@@ -32,6 +35,6 @@ class ArticlesMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_articles');
+     Schema::dropIfExists('tb_comments');
     }
 }

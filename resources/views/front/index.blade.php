@@ -1,18 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Iniciar Sesion</title>
-</head>
-<body>
+@extends('front.template')
 
+@section('title','INGRESAR')
+
+@section('top')
+<h5><strong>PROYECTO SLACK-TRAINEE</strong></h5>
+@endsection
+
+@section('body')
+<div class="card-header">
+	INGRESO DE USUARIO
+</div>
+<div class="card-body">
 <form method="post" action="{{ action('User_controller@login') }}">
-	{{ csrf_field() }}
-<label for="email">Email</label>
-<input type="text" name="email" placeholder="Ingrese email">
-<label for="pass">Pass</label>
-<input type="password" name="pass" placeholder="********">
-<button type="submit">Ingresar</button>
-</form>
+				{{ csrf_field() }}
+  <div class="form-group">
+<label for="name">Nombre</label>
+	<input type="text" name="name" class="form-control" placeholder="Ingrese nombre">
+  </div>
 
-</body>
-</html>
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>
+</div>
+
+
+@endsection 
+
+
+
+
+
+
+
+

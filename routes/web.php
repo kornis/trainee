@@ -16,8 +16,24 @@ Route::get('/',[
 'uses' => 'User_controller@index'
 ]);
 
-Route::post('/registrarse',
+Route::get('/logout',['as'=>'logout','uses'=>'User_controller@logout']);
+
+
+Route::post('/ingresar',
 [
-	'uses' => 'User_controller@create',
-	'as' => 'user.create'
+	'uses' => 'User_controller@login',
+	'as' => 'user.login'
+]); 
+
+Route::get('/posteos',[
+'as' => 'posts',
+'uses' => 'post_controller@index'
 ]);
+
+Route::get('/crear-post',['as'=>'create_post','uses'=>'post_controller@create']);
+
+Route::post('/post-creado',['as'=>'store_post','uses'=>'post_controller@store']);
+
+Route::post('/comentar/{id}', ['as' => 'store', 'uses'=>'comment_controller@store']);
+
+Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost']);

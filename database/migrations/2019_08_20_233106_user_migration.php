@@ -13,12 +13,12 @@ class UserMigration extends Migration
      */
     public function up()
     {
-     Schema::create('users',function(Blueprint $table){
+     Schema::create('tb_users',function(Blueprint $table){
 
-        $table->increments('id');
-        $table->string('name');
-        $table->string('email')->unique();
-        $table->string('password');
+        $table->increments('id_user');
+        $table->string('name_user');
+        $table->string('email_user');//->unique();
+        $table->string('password_user');
         $table->rememberToken();
         $table->timestamps();
      });
@@ -31,6 +31,6 @@ class UserMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tb_users');
     }
 }

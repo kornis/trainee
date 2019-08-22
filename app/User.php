@@ -15,19 +15,22 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $table = 'tb_users';
+    protected $primaryKey = 'id_user';
     protected $fillable = [
-        'name', 'email', 'password',
+        'name_user', 'email_user', 'password_user',
     ];
 
     
     protected $hidden = [
-        'password', 'remember_token',
+        'password_user', 'remember_token',
     ];
 
  
  public function articles()
  {
-    return $this->hasMany('App\Article');
+    return $this->hasMany('App\Article','id_user','user_id');
  }
 
  public function comments()

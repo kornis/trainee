@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-   protected $fillable = ['title','content'];
+	    protected $table = 'tb_comments';
+   protected $fillable = ['title_comment','content_comment'];
+protected $primaryKey = 'id_comment';
 
    public function user()
    {
@@ -15,6 +17,6 @@ class Comment extends Model
 
    public function article()
    {
-   	return $this->belongsTo('App\Article');
+   	return $this->belongsTo('App\Article','comment_id','id_comment');
    }
 }
