@@ -20,6 +20,9 @@ class ArticlesMigration extends Migration
             $table->text('content_article');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id_user')->on('tb_users')->onDelete('cascade');
+
+            $table->integer('topic_id')->unsigned();
+            $table->foreign('topic_id')->references('id_topic')->on('tb_topics')->onDelete('cascade');
             
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TopicMigrate extends Migration
+class TagsMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class TopicMigrate extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tb_tags', function(Blueprint $table)
+            {
+                $table->increments('id_tag');
+                $table->string('name_tag')->unique();
+                $table->timestamps();
+            });
     }
 
     /**
@@ -23,6 +28,6 @@ class TopicMigrate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tb_tags');
     }
 }
