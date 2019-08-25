@@ -20,7 +20,13 @@
   <div class="form-group">
     <textarea class="form-control" name="content" rows="6"></textarea>
   </div>
-
+  <div class="form-group">
+    <select name="topic_id" class="form-control">
+      @foreach ($topics as $topic)
+        <option value='{{$topic->id_topic}}'>{{$topic->name_topic}}</option>  
+      @endforeach
+    </select>
+  </div>
   <button type="submit" class="btn btn-primary">Postear</button>
 </form>
 </div>

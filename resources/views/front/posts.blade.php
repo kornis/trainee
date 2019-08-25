@@ -11,6 +11,9 @@
 @endsection
 
 @section('body')
+<div class="container">
+<div class="row">
+<div class="col-md-9">
 <div class="card-header">
 	<p>Ultimos posteos</p>
 </div>
@@ -26,9 +29,30 @@
 		{{$post->content_article}}
 		
 	</div>
-	<div><hr><span>Última actualización: </span>{{$post->updated_at}}</div>
+	<div><hr><span>Última actualización: </span>{{$post->updated_at}}<span style="float: right;">  TOPIC: <a href="">{{$post->topic->name_topic}} </a></span></div>
 	</div>
 @endforeach
+</div>
+</div>
+	<div class="col-md-3">
+		<div class="card">
+			<div class="card-header">
+				<p>TOPICS</p>
+			</div>
+			<div class="card-body">
+				<table>
+					<tbody>
+						@foreach ($topics as $topic)
+					<tr><td>{{$topic->name_topic}}</td></tr>
+				@endforeach
+						
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>	
+</div>
 </div>
 
 @endsection

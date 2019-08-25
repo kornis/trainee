@@ -18,6 +18,8 @@ class ArticlesMigration extends Migration
             $table->increments('id_article');
             $table->string('title_article');
             $table->text('content_article');
+
+
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id_user')->on('tb_users')->onDelete('cascade');
 
