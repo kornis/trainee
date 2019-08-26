@@ -12,8 +12,9 @@ class front_controller extends Controller
 {
     public function showPosts()
     {
-        $topics = Topic::All();
-    	return redirect()->route('posts')->with('topics',$topics);
+        $topics = Topic::topics()->get();
+        dd($topics);
+    	return redirect()->route('posts');
     }
 
     public function singlePost($id)

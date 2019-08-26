@@ -12,6 +12,11 @@ class Topic extends Model
 
    public function article()
    {
-   	return hasMany('App\Article','topic_id','id_topic');
+   	return $this->hasMany('App\Article','topic_id','id_topic');
+   }
+
+   public function scopeTopics($query)
+   {
+   	return $query->orderBy('name_topic');
    }
 }

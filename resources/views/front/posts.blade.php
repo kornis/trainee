@@ -34,24 +34,7 @@
 @endforeach
 </div>
 </div>
-	<div class="col-md-3">
-		<div class="card">
-			<div class="card-header">
-				<p>TOPICS</p>
-			</div>
-			<div class="card-body">
-				<table>
-					<tbody>
-						@foreach ($topics as $topic)
-					<tr><td>{{$topic->name_topic}}</td></tr>
-				@endforeach
-						
-					</tbody>
-				</table>
-				
-			</div>
-		</div>
-	</div>	
+	@include('front.partials.topics')
 </div>
 </div>
 
