@@ -15,8 +15,6 @@ class User_controller extends Controller
     public function login(Request $request)
     {
         $users_list = User::All();
-
-       
        
             foreach($users_list as $users)
             {
@@ -40,7 +38,7 @@ class User_controller extends Controller
         
     }
         
-
+ 
 
 
     public function posts()

@@ -27,6 +27,10 @@
       @endforeach
     </select>
   </div>
+    <div class="form-group">
+    <label for="tags">TAGS: </label>
+    <input type="text" name="tags" class="form-control">
+  </div>
   <button type="submit" class="btn btn-primary">Postear</button>
 </form>
 </div>

@@ -7,8 +7,8 @@
 				<ul class="list-group">
 					@foreach ($topics as $topic)
 						<li class="list-group-item"> 
-							<span>{{$topic->name_topic}}</span>
-							<span class="badge badge-primary" style="float: right;">{{$topic->article->count()}}</span>
+							<a href="{{action('topic_controller@show',$topic->id_topic)}}"><span>{{$topic->name_topic}}</span>
+							<span class="badge badge-primary" style="float: right;">{{$topic->article->count()}}</span></a>
 						</li>
 					@endforeach
 					

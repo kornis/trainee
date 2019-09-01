@@ -3,7 +3,6 @@
 @section('title','El Post')
 
 @section('top')
-<h5><strong>PROYECTO SLACK-TRAINEE</strong></h5>
 @include('front.partials.buttons')
 @endsection
 
@@ -34,7 +33,7 @@
 @foreach ($comments as $comment)
 <div class="card">
 	<div class="card-header">
-	<span>Comentario de: <strong>{{$comment->name_user}}</strong></span><span>  -  Comentado: {{$comment->created_at}}</span>
+	<span>Comentario de: <strong>{{$comment->name_user}}</strong></span><span> - Título: {{$comment->title_comment}}</span><span style="float: right;">Comentado: {{$comment->created_at}}</span>
 	</div>
 	<div class="card-body">
 		{{$comment->content_comment}}

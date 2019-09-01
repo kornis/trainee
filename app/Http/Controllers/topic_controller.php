@@ -20,5 +20,12 @@ class topic_controller extends Controller
     	return view('admin.create_topic');
     }
 
+    public function show($id)
+    {
+        $topics = Topic::find($id);
+    
+        return view('front.topics_view')->with('topics',$topics);
+    }
+
 
 }

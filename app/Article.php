@@ -24,7 +24,7 @@ public function comments()
 
 public function tag()
 {
-	return $this->belongsToMany('App\Tag','tb_article_tag','article_id','id_article');
+	return $this->belongsToMany('App\Tag','tb_article_tag','article_id','tag_id');
 }
 
 public function topic()

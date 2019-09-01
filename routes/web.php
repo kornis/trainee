@@ -38,4 +38,6 @@ Route::post('/comentar/{id}', ['as' => 'store', 'uses'=>'comment_controller@stor
 
 Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost']);
 
-Route::resource('/topic','topic_controller',['only'=>['create','store']]);
+Route::resource('/topic','topic_controller',['only'=>['create','store','show']]);
+
+Route::resource('/tags','tag_controller',['only'=>['create','store','show']]);
