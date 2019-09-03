@@ -13,6 +13,6 @@ class Tag extends Model
     protected $fillable = ['name_tag'];
 
     public function article(){
-    	return belongsToMany('App\Article','tb_article_tag','tag_id','article_id');
+    	return $this->belongsToMany('App\Article','tb_article_tag','tag_id','article_id');
     }
 }

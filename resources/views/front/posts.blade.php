@@ -13,7 +13,14 @@
 <div class="row">
 <div class="col-md-9">
 <div class="card-header">
-	<p>Ultimos posteos</p>
+	<p>Ultimos posteos<span> @if (isset($tag))
+		- Segun TAG: {{$tag->name_tag}}
+	@endif
+	 @if (isset($topic))
+		- Segun TOPIC: {{$topic->name_topic}}
+	@endif
+
+</span></p>
 </div>
 <div class="card-body">
 

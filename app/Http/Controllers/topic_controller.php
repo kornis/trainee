@@ -22,9 +22,10 @@ class topic_controller extends Controller
 
     public function show($id)
     {
-        $topics = Topic::find($id);
-    
-        return view('front.topics_view')->with('topics',$topics);
+        $topic = Topic::find($id);
+        $posts = $topic->article;
+        return view('front.posts')->with('posts',$posts)->with('topic',$topic);
+        //return view('front.topics_view')->with('topics',$topics);
     }
 
 

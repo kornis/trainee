@@ -28,7 +28,7 @@
     </select>
   </div>
     <div class="form-group">
-    <label for="tags">TAGS: </label>
+    <label for="tags">TAGS: <small><span class="text-muted">Separar los tags con punto y coma</span></small></label>
     <input type="text" name="tags" class="form-control">
   </div>
   <button type="submit" class="btn btn-primary">Postear</button>

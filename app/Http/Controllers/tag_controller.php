@@ -21,4 +21,12 @@ class tag_controller extends Controller
 	    	}    	
 	    }	
     }
+
+    public function show($id)
+    {
+    	$post_tag = Tag::find($id);
+    	
+    	$posts = $post_tag->article;
+    	return view('front.posts')->with('posts',$posts)->with('tag',$post_tag);
+    }
 }

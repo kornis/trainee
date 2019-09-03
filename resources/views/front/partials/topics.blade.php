@@ -1,4 +1,7 @@
+
 <div class="col-md-3">
+	
+		
 		<div class="card">
 			<div class="card-header">
 				<p>TOPICS</p>
@@ -16,4 +19,24 @@
 				
 			</div>
 		</div>
-	</div>	
+		
+
+		
+		<div class="card">
+			<div class="card-header">
+				<p>TAGS</p>
+			</div>
+			<div class="card-body">
+			
+				@foreach ($tags as $tag)
+					
+						<a href="{{action('tag_controller@show',$tag->id_tag)}}"><span class="badge badge-primary">{{$tag->name_tag}}</span>
+						</a>
+					
+				@endforeach
+			
+			</div>
+			</div>
+		</div>
+
+	
