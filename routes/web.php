@@ -11,12 +11,25 @@
 |
 */
 
-Route::get('/',[
+Route::get('/',function(){
+	if(session('user')=="")
+	{
+		return action('User_controller@index');
+	}
+	else
+	{
+		return redirect()->route('posts');
+	}
+})->name('index');
+
+/*Route::get('/',[
 'as' => 'index',
 'uses' => 'User_controller@index'
-]);
+]);*/
+
 
 Route::get('/logout',['as'=>'logout','uses'=>'User_controller@logout']);
+
 
 Route::get('/ingresar', function(){
 	return view('front.index');
@@ -37,24 +50,24 @@ Route::get('/registrarse', function(){
 Route::get('/posteos',[
 'as' => 'posts',
 'uses' => 'post_controller@index'
-]);
+])->middleware('checkLogin');
 
 //Route::resource('perfil','user_controller');
 
-Route::post('/perfil',['as'=>'update_profile','uses'=>'image_controller@update_avatar']);
+Route::post('/perfil',['as'=>'update_profile','uses'=>'image_controller@update_avatar'])->middleware('checkLogin');
 
-Route::get('/perfil',['as'=>'profile','uses'=>'user_controller@profile']);
+Route::get('/perfil',['as'=>'profile','uses'=>'user_controller@profile'])->middleware('checkLogin');
 
-Route::get('/crear-post',['as'=>'create_post','uses'=>'post_controller@create']);
+Route::get('/crear-post',['as'=>'create_post','uses'=>'post_controller@create'])->middleware('checkLogin');
 
-Route::post('/post-creado',['as'=>'store_post','uses'=>'post_controller@store']);
+Route::post('/post-creado',['as'=>'store_post','uses'=>'post_controller@store'])->middleware('checkLogin');
 
-Route::post('/comentar/{id}', ['as' => 'store', 'uses'=>'comment_controller@store']);
+Route::post('/comentar/{id}', ['as' => 'store', 'uses'=>'comment_controller@store'])->middleware('checkLogin');
 
-Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost']);
+Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost'])->middleware('checkLogin');
 
-Route::resource('/topic','topic_controller',['only'=>['create','store','show']]);
+Route::resource('/topic','topic_controller',['only'=>['create','store','show']])->middleware('checkLogin');
 
-Route::resource('/tags','tag_controller',['only'=>['create','store','show']]);
+Route::resource('/tags','tag_controller',['only'=>['create','store','show']])->middleware('checkLogin');
 
 
