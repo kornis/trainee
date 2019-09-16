@@ -66,7 +66,7 @@ Route::post('/post-creado',['as'=>'store_post','uses'=>'post_controller@store'])
 
 Route::post('/comentar/{id}', ['as' => 'store', 'uses'=>'comment_controller@store'])->middleware('checkLogin');
 
-Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost'])->middleware('checkLogin');
+Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost']);
 
 Route::resource('/topic','topic_controller',['only'=>['create','store','show']])->middleware('checkLogin');
 

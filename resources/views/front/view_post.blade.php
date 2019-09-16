@@ -17,6 +17,9 @@
 
 <div class="card">
 	<div class="card-body">
+		@if (session('user') != "")
+		
+		
 <form method="post" action="{{action('comment_controller@store',$post->id_article)}}">
 	{{ csrf_field() }}
   <div class="form-group">
@@ -28,8 +31,17 @@
   </div>
   <button type="submit" class="btn btn-success">ENVIAR COMENTARIO</button>
 </form>
+@else
+
+	<div class="">
+		<span>Para poder comentar debe iniciar sesión.  <a href="{{route('login')}}"><span class="btn btn-primary">Iniciar Sesion</span></a></span>
+	</div>
+
+@endif
 </div>
 </div>
+
+
 @foreach ($comments as $comment)
 <div class="card">
 	<div class="card-header">
