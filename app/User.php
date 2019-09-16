@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $table = 'tb_users';
     protected $primaryKey = 'id_user';
     protected $fillable = [
-        'name_user', 'email_user', 'password_user',
+        'name_user', 'email_user','avatar', 'password_user','type_user'
     ];
 
     
@@ -36,6 +36,11 @@ class User extends Authenticatable
  public function comments()
  {
     return $this->hasMany('App\Comment');
+ }
+
+ public function avatar()
+ {
+    return $this->hasOne('App\Image','user_id','id_user');
  }
 
  

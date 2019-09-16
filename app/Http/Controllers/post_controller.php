@@ -21,11 +21,10 @@ class post_controller extends Controller
     public function store(Request $request)
     {
     	$post = new Article();
-    	$name_user = session()->get('name_user');
-    	$user = User::where('name_user',$name_user)->get();
+    	$user = session('user');
     	$post->title_article = $request->title;
     	$post->content_article = $request->content;
-    	$post->user_id = $user[0]->id_user;
+    	$post->user_id = $user->id_user;
         $post->topic_id = $request->topic_id; 
         $post->save();
         $post_tag = Article::find(intval($post->id_article));

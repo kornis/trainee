@@ -28,7 +28,7 @@
 @foreach ($posts as $post)
 	<div class="card" style="margin-top: 15px">
 	<div class="card-header">
-		<span>TITULO: <a href="{{route('view_post', $post->id_article)}}"> {{$post->title_article}}</a></span><span></span>
+		<span>TITULO: <a href="{{route('view_post', $post->id_article)}}"> {{$post->title_article}}</a></span><span></span><span style="float: right;">Creado por: {{$post->user->name_user}}</span>
 	</div>
 
 	<div><span>Última actualización: </span>{{$post->updated_at}}<span style="float: right;">  TOPIC: <a href="">{{$post->topic->name_topic}} </a></span></div>

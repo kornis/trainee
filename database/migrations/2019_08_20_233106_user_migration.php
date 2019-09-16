@@ -19,6 +19,7 @@ class UserMigration extends Migration
         $table->string('name_user');
         $table->string('email_user');//->unique();
         $table->string('password_user');
+        $table->string('avatar')->default('default.jpg');
         $table->rememberToken();
         $table->timestamps();
      });

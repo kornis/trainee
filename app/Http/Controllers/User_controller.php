@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class User_controller extends Controller
@@ -14,31 +15,41 @@ class User_controller extends Controller
 
     public function login(Request $request)
     {
-        $users_list = User::All();
-       
-            foreach($users_list as $users)
-            {
+        $success = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Usuario y/o contraseña erroneos</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';  
 
-            if($users->name_user == $request->name)
+        $user = User::where('email_user',$request->email)->first();
+      
+            if(isset($user))
             {
-                session(['name_user'=>$request->name]);
+                if(Hash::check($request->password,$user->password_user))
+                {
 
-              return redirect()->route('posts');  
+                    session(['user'=>$user]);
+                    return redirect()->route('posts');
+                }
+                else
+                {
+                    return view('front.index')->with('success',$success);
+                }
             }
-             }
-                 $user = new User();
-                $user->name_user = $request->name;
-                $user->password_user = bcrypt("123456");
-                $user->email_user = "example@example.com";
-                $user->save();
-                session(['name_user'=>$request->name]);
-
-                $created = "Usuario creado exitosamente";
-                return redirect()->route('posts');
+            else
+                {
+                    return view('front.index')->with('success',$success);
+                }
+        }
         
+    public function register(Request $request)
+    {
+        $user = new User();
+        $user->name_user = $request->name;
+        $user->email_user = $request->email;
+        $user->password_user =  Hash::make($request->password);
+        $user->save();
+        $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Usuario creado exitosamente</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button></div>';
+        return view('front.index')->with('success',$success);
     }
-        
- 
 
 
     public function posts()
@@ -50,6 +61,15 @@ class User_controller extends Controller
     {
     	return view('front.signup');
     }
+
+    public function profile()
+    {
+        $session_name = session('name_user');
+        $user = User::where('name_user',$session_name)->first();
+        
+        return view('admin.user_config')->with('user',$user);
+    }
+
 
     public function logout()
     {

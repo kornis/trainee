@@ -18,6 +18,9 @@ Route::get('/',[
 
 Route::get('/logout',['as'=>'logout','uses'=>'User_controller@logout']);
 
+Route::get('/ingresar', function(){
+	return view('front.index');
+});
 
 Route::post('/ingresar',
 [
@@ -25,10 +28,22 @@ Route::post('/ingresar',
 	'as' => 'user.login'
 ]); 
 
+Route::post('/registrarse',['uses'=>'User_controller@register','as'=>'register']);
+
+Route::get('/registrarse', function(){
+	return view('front.register');
+})->name('user.register');
+
 Route::get('/posteos',[
 'as' => 'posts',
 'uses' => 'post_controller@index'
 ]);
+
+//Route::resource('perfil','user_controller');
+
+Route::post('/perfil',['as'=>'update_profile','uses'=>'image_controller@update_avatar']);
+
+Route::get('/perfil',['as'=>'profile','uses'=>'user_controller@profile']);
 
 Route::get('/crear-post',['as'=>'create_post','uses'=>'post_controller@create']);
 
@@ -41,3 +56,5 @@ Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost'
 Route::resource('/topic','topic_controller',['only'=>['create','store','show']]);
 
 Route::resource('/tags','tag_controller',['only'=>['create','store','show']]);
+
+
