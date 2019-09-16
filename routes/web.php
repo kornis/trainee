@@ -28,7 +28,7 @@ Route::get('/',function(){
 ]);*/
 
 
-Route::get('/perfil/{id}','User_controller@viewProfiles')->name('view_user');
+Route::get('/perfil/{id}','User_controller@viewProfiles')->name('view_user')->middleware('checkLogin');
 
 Route::get('/logout',['as'=>'logout','uses'=>'User_controller@logout']);
 
@@ -52,7 +52,7 @@ Route::get('/registrarse', function(){
 Route::get('/posteos',[
 'as' => 'posts',
 'uses' => 'post_controller@index'
-])->middleware('checkLogin');
+]);
 
 //Route::resource('perfil','user_controller');
 
