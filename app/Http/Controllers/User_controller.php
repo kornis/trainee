@@ -10,7 +10,7 @@ class User_controller extends Controller
 {
     public function index()
     {
-    	return view('front.index');
+    	return view('front.posts');
     }
 
     public function login(Request $request)
@@ -29,12 +29,12 @@ class User_controller extends Controller
                 }
                 else
                 {
-                    return view('front.index')->with('success',$success);
+                    return view('front.login')->with('success',$success);
                 }
             }
             else
                 {
-                    return view('front.index')->with('success',$success);
+                    return view('front.login')->with('success',$success);
                 }
         }
         
@@ -81,6 +81,6 @@ class User_controller extends Controller
     public function logout()
     {
         session(['user'=>'']);
-        return view('front.index');
+        return view('front.login');
     }
 }

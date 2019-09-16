@@ -8,7 +8,7 @@
 <a href="{{action('User_controller@logout')}}"><span class="btn btn-danger">DESLOGUEARSE</span></a>
 @endif
 @if (session('user')=="")
-	<a href="{{route('index')}}"><span class="btn btn-primary">INICIAR SESION</span></a>
+	<a href="{{route('login')}}"><span class="btn btn-primary">INICIAR SESION</span></a>
 @endif
 
 </div>

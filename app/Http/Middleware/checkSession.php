@@ -18,7 +18,7 @@ class checkSession
         if(session('user')=="")
         {
             //return abort(401);
-            return redirect()->route('index');
+            return redirect()->route('login');
         }
         return $next($request);
     }

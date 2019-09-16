@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/',function(){
+Route::get('/login',function(){
 	if(session('user')=="")
 	{
-		return view('front.index');
+		return view('front.login');
 	}
 	else
 	{
 		return redirect()->route('posts');
 	}
-})->name('index');
+})->name('login');
 
 /*Route::get('/',[
 'as' => 'index',
@@ -49,7 +49,7 @@ Route::get('/registrarse', function(){
 	return view('front.register');
 })->name('user.register');
 
-Route::get('/posteos',[
+Route::get('/',[
 'as' => 'posts',
 'uses' => 'post_controller@index'
 ]);

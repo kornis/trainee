@@ -27,7 +27,7 @@
 	<input type="password" name="password" class="form-control" placeholder="********">
   </div>
   <button type="submit" class="btn btn-primary">Registrarse</button>
-	<small><span class="">Ya tiene usuario?</span><a href="{{route('user.login')}}"> Click Aquí</a></small>
+	<small><span class="">Ya tiene usuario?</span><a href="{{route('login')}}"> Click Aquí</a></small>
 </form>
 </div>
 
