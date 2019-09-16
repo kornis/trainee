@@ -64,10 +64,17 @@ class User_controller extends Controller
 
     public function profile()
     {
-        $session_name = session('name_user');
-        $user = User::where('name_user',$session_name)->first();
-        
+         
+        $user = User::where('email_user',session('user')->email_user)->first();
+    
         return view('admin.user_config')->with('user',$user);
+    }
+
+    public function viewProfiles(Request $request)
+    {
+                $user = User::where('id_user',$request->id)->first();
+    
+        return view('front.profiles')->with('user',$user);
     }
 
 

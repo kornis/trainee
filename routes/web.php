@@ -14,7 +14,7 @@
 Route::get('/',function(){
 	if(session('user')=="")
 	{
-		return action('User_controller@index');
+		return view('front.index');
 	}
 	else
 	{
@@ -27,6 +27,8 @@ Route::get('/',function(){
 'uses' => 'User_controller@index'
 ]);*/
 
+
+Route::get('/perfil/{id}','User_controller@viewProfiles')->name('view_user');
 
 Route::get('/logout',['as'=>'logout','uses'=>'User_controller@logout']);
 

@@ -19,7 +19,7 @@
 			{{-- <input name="_method" type="hidden" value="PUT"> --}}
 			
 				
-				<img src="{{asset('/avatars/'.$user->avatar)}}">
+				<img src="{{asset('/avatars/'.$user->avatar)}}" style="border-radius: 50%; max-width: 150px;border: 1px solid gray;">
 				
 		
 			 

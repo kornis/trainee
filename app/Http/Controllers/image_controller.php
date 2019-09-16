@@ -10,11 +10,10 @@ class image_controller extends Controller
 {
 	 public function update_avatar(Request $request)
     {
-    	$id_user = session('name_user');
-    	$user = User::where('name_user',$id_user)->first();
+    	$user = User::where('email_user',session('user')->email_user)->first();
         $avatar = $request->avatar;
         $path = public_path().'\avatars';  
-        $name_avatar = session('name_user')."-".time().".".$avatar->getClientOriginalExtension();
+        $name_avatar = $user->name_user."-".time().".".$avatar->getClientOriginalExtension();
         $avatar->move($path,$name_avatar);
         $user->avatar = $name_avatar;
         $user->save();
