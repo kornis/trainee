@@ -31,7 +31,7 @@
 		<span>TITULO: <a href="{{route('view_post', $post->id_article)}}"> {{$post->title_article}}</a></span><span></span><span style="float: right;">Creado por: <a href="{{route('view_user',$post->user->id_user)}}"> {{$post->user->name_user}}</a></span>
 	</div>
 
-	<div><span>Última actualización: </span>{{$post->updated_at}}<span style="float: right;">  TOPIC: <a href="">{{$post->topic->name_topic}} </a></span></div>
+	<div><span>Última actualización: </span>{{$post->updated_at}}<span style="float: right;">  TOPIC: <a href="{{action('topic_controller@show',$post->topic->id_topic)}}">{{$post->topic->name_topic}} </a></span></div>
 	</div>
 @endforeach
 </div>

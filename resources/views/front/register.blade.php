@@ -11,6 +11,9 @@
 	Registrar nuevo usuario
 </div>
 <div class="card-body">
+	@if (isset($success))
+		{!! $success !!}
+	@endif
 <form method="post" action="{{ route('register') }}">
 				{{ csrf_field() }}
   <div class="form-group">

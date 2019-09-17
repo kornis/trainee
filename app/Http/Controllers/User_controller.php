@@ -40,6 +40,18 @@ class User_controller extends Controller
         
     public function register(Request $request)
     {
+        $email = $request->email;
+        if(User::where('email_user',$email)->first() != null)
+        {
+            $success = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>El email ya está en uso</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button></div>';
+            return view('front.register')->with('success',$success);
+        }
+        else
+        {
+
+
         $user = new User();
         $user->name_user = $request->name;
         $user->email_user = $request->email;
@@ -48,7 +60,8 @@ class User_controller extends Controller
         $success = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Usuario creado exitosamente</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button></div>';
-        return view('front.index')->with('success',$success);
+        return view('front.login')->with('success',$success);
+    }
     }
 
 
