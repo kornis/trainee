@@ -56,9 +56,9 @@ Route::get('/',[
 
 //Route::resource('perfil','user_controller');
 
-Route::post('/perfil',['as'=>'update_profile','uses'=>'image_controller@update_avatar'])->middleware('checkLogin');
+Route::post('/perfil',['as'=>'update_avatar','uses'=>'image_controller@update_avatar'])->middleware('checkLogin');
 
-Route::get('/perfil',['as'=>'profile','uses'=>'user_controller@profile'])->middleware('checkLogin');
+Route::get('/perfil',['as'=>'update_profile','uses'=>'user_controller@profile'])->middleware('checkLogin');
 
 Route::get('/crear-post',['as'=>'create_post','uses'=>'post_controller@create'])->middleware('checkLogin');
 
@@ -71,5 +71,11 @@ Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost'
 Route::resource('/topic','topic_controller',['only'=>['create','store','show']])->middleware('checkLogin');
 
 Route::resource('/tags','tag_controller',['only'=>['create','store','show']])->middleware('checkLogin');
+
+Route::post('/perfil/update',['as'=>'update_profile','uses'=>'user_controller@update_profile'])->middleware('checkLogin');
+
+Route::get('/perfil/update',function(){
+	return view('admin.modify_user');
+})->name('modify_profile');
 
 

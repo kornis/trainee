@@ -50,8 +50,6 @@ class User_controller extends Controller
         }
         else
         {
-
-
         $user = new User();
         $user->name_user = $request->name;
         $user->email_user = $request->email;
@@ -85,11 +83,18 @@ class User_controller extends Controller
 
     public function viewProfiles(Request $request)
     {
-                $user = User::where('id_user',$request->id)->first();
-    
-        return view('front.profiles')->with('user',$user);
+        $user = User::where('id_user',$request->id)->first();
+        if(!empty($user))
+        {
+            return view('front.profiles')->with('user',$user);    
+        }
+        
     }
 
+    public function update_profile(Request $request)
+    {
+
+    }
 
     public function logout()
     {

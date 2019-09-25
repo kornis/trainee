@@ -45,7 +45,10 @@
 @foreach ($comments as $comment)
 <div class="card">
 	<div class="card-header">
-	<span>Comentario de: <strong>{{$comment->name_user}}</strong></span><span> - Título: {{$comment->title_comment}}</span><span style="float: right;">Comentado: {{$comment->created_at}}</span>
+	<span>Comentario de: <strong>{{$comment->name_user}}</strong></span><span> - Título: {{$comment->title_comment}}</span><span style="float: right;">@if (session('user')->id_user == $comment->user_id)
+		<a href="#"><span class="badge badge-primary">Editar</span></a>
+		<a href="#"><span class="badge badge-danger">Eliminar</span></a>
+	@endif  Comentado: {{$comment->created_at}}</span>
 	</div>
 	<div class="card-body">
 		{{$comment->content_comment}}

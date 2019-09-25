@@ -12,9 +12,11 @@
 	<ul class="list-group">
 		<li class="list-group-item"><label>Nombre: {{$user->name_user}}</label></li>
 		<li class="list-group-item"><label>Email: {{$user->email_user}}</label></li>
-		<li class="list-group-item"><label>Tipo de Usuario: {{$user->name_user}}</label></li>
+		<li class="list-group-item"><label>Tipo de Usuario: {{$user->type_user}}</label></li>
 	</ul>
-	<form method="post" action="{{action('image_controller@update_avatar',$user->id_user)}}" enctype="multipart/form-data">
+	<a href=""><span class="btn btn-primary">Modificar Datos</span></a>
+
+	<form method="post" action="{{route('update_avatar',$user->id_user)}}" enctype="multipart/form-data">
 		{{ csrf_field() }}
 			{{-- <input name="_method" type="hidden" value="PUT"> --}}
 			
@@ -23,8 +25,8 @@
 				
 		
 			 
-		<input class="" type="file" name="avatar">
-		<a href=""><button type="submit" class="btn btn-warning">Modificar Datos</button></a>	
+		<input class="" type="file" name="avatar" required>
+		<a href=""><button type="submit" class="btn btn-warning">Modificar Imagen</button></a>	
 	</form>
 	
 </div>

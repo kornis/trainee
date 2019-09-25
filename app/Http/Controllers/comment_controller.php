@@ -25,4 +25,13 @@ class comment_controller extends Controller
     	$comment->save();
     	return redirect()->route('view_post',$id_post);
     }
+
+    public function update_comment(Request $request,$id_comment)
+    {
+        $comment = Comment::find($id_comment)->first();
+        $comment->content_comment = $request->content_comment;
+        $comment->title_comment = $request->title_comment;
+        $comment->save();
+        
+    }
 }

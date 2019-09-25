@@ -20,6 +20,7 @@ class UserMigration extends Migration
         $table->string('email_user');//->unique();
         $table->string('password_user');
         $table->string('avatar')->default('default.jpg');
+        $table->enum('type_user' ,['member','admin','moderator'])->default('member');
         $table->rememberToken();
         $table->timestamps();
      });
