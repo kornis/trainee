@@ -17,7 +17,9 @@
 
 <div class="card">
 	<div class="card-body">
-		@if (session('user') != "")
+	 
+		@if(session('user')!='') 
+		@if(session('user')->type_user == "Admin" || session('user')->type_user == "Miembro" || session('user')->type_user == "Moderador" ) 
 		
 		
 <form method="post" action="{{action('comment_controller@store',$post->id_article)}}">
@@ -31,12 +33,14 @@
   </div>
   <button type="submit" class="btn btn-success">ENVIAR COMENTARIO</button>
 </form>
+		
 @else
 
 	<div class="">
 		<span>Para poder comentar debe iniciar sesión.  <a href="{{route('login')}}"><span class="btn btn-primary">Iniciar Sesion</span></a></span>
 	</div>
 
+@endif
 @endif
 </div>
 </div>
@@ -45,10 +49,23 @@
 @foreach ($comments as $comment)
 <div class="card">
 	<div class="card-header">
-	<span>Comentario de: <strong>{{$comment->name_user}}</strong></span><span> - Título: {{$comment->title_comment}}</span><span style="float: right;">@if (session('user')->id_user == $comment->user_id)
-		<a href="#"><span class="badge badge-primary">Editar</span></a>
-		<a href="#"><span class="badge badge-danger">Eliminar</span></a>
-	@endif  Comentado: {{$comment->created_at}}</span>
+	<span>Comentario de: <a href="{{route('view_user',$comment->user_id)}}"> {{$comment->name_user}}</strong></a></span>
+	@if($comment->type_user == 'Admin')
+	<span class="badge badge-danger">Admin</span>
+	@endif
+	@if($comment->type_user == 'Moderador')
+	<span class="badge badge-primary">Mod</span>
+	@endif
+	<span> - Título: {{$comment->title_comment}}</span>
+	<span style="float: right;"> Comentado: {{$comment->created_at}}</span>
+	<span style="float: right;"> @if(session('user')!='')
+	@if(session('user')->id_user == $comment->user_id || session('user')->type_user == 'Admin' || session('user')->type_user == 'Moderador')
+	
+		<a href="{{route('edit_comment',$comment->id_comment)}}"><span class="badge badge-primary">Editar</span></a>
+		<a href="{{route('delete_comment',$comment->id_comment)}}"><span class="badge badge-danger">Eliminar</span></a>
+	
+	</span>
+	@endif @endif 
 	</div>
 	<div class="card-body">
 		{{$comment->content_comment}}

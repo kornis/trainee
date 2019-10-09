@@ -17,10 +17,11 @@ class UserMigration extends Migration
 
         $table->increments('id_user');
         $table->string('name_user');
-        $table->string('email_user');//->unique();
+        $table->string('email_user')->unique();
         $table->string('password_user');
-        $table->string('avatar')->default('default.jpg');
-        $table->enum('type_user' ,['member','admin','moderator'])->default('member');
+        $table->string('avatar')->default('default.png');
+        $table->enum('type_user' ,['Miembro','Admin','Moderador'])->default('Miembro');
+        $table->enum('ban',['true','false'])->default('false');
         $table->rememberToken();
         $table->timestamps();
      });

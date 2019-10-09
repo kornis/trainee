@@ -17,6 +17,6 @@ class image_controller extends Controller
         $avatar->move($path,$name_avatar);
         $user->avatar = $name_avatar;
         $user->save();
-       	return view('admin.user_config')->with('user',$user);;
+       	return view('admin.modify_user')->with('user',$user);;
     }
 }

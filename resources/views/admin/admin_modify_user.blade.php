@@ -9,8 +9,8 @@
 	<span>Administracion de usuario</span>
 </div>
 <div class="card-body">
-	<p>Modificar datos de usuario</p>
-	<form action="" method="post">
+	<form method="post" action="{{route('store_modified_user',$user->id_user)}}" >
+    {{ csrf_field() }}
 		<div class="form-group">
 			<input name="name_user" type="text" class="form-control" value="{{$user->name_user}}">
 		</div>
@@ -20,9 +20,24 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="password_user">Nueva Contraseña</label>
-			<input name="password_user" type="password" class="form-control" placeholder="********">
+			<label for="type_user">Tipo de Usuario</label>
+			<select name="type_user" class="form-control" >
+                <option disabled selected>Elija una opcion...</option>
+				<option>Administrador</option>
+                <option>Moderador</option>
+                <option>Miembro</option>
+            </select>
 		</div>
+
+		<div class="form-group">
+			<label for="ban">Bloquear Usuario</label>
+			<select name="ban" class="form-control" >
+                <option>false</option>
+                <option>true</option>
+            </select>
+		</div>
+
+		
 		<button type="submit" class="btn btn-success">Enviar Datos</button>
 
 	</form>
@@ -41,4 +56,3 @@
 </div>
 
 @endsection
-

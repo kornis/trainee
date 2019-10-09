@@ -18,6 +18,16 @@ class post_controller extends Controller
 	}
 
 
+//funcion (api) que retorna todos los posts creados
+
+public function api_getPosts()
+{
+    $var = Article::join('tb_users','tb_articles.user_id','=','tb_users.id_user')->join('tb_comments','tb_articles.id_article','=','tb_comments.article_id')->select('title_article','content_article','name_user','title_comment','content_comment')->get();
+    $posts = json_encode($var);
+    return $posts;
+}
+
+
     public function store(Request $request)
     {
     	$post = new Article();

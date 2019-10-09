@@ -28,10 +28,30 @@ class comment_controller extends Controller
 
     public function update_comment(Request $request,$id_comment)
     {
-        $comment = Comment::find($id_comment)->first();
+
+        $comment = Comment::where('id_comment',$id_comment)->first();
+        if(isset($comment))
+        {
         $comment->content_comment = $request->content_comment;
         $comment->title_comment = $request->title_comment;
         $comment->save();
+        $id_post = $comment->article_id;  
+
+        return redirect()->route('view_post',$id_post);        
+        }
+
         
+    }
+
+    public function view_update($id)
+    {
+        $comment = Comment::where('id_comment',$id)->first();
+        return view('front/modify_comment')->with('comment',$comment);
+    }
+
+    public function delete_comment($id)
+    {
+        Comment::where('id_comment',$id)->delete();
+        return redirect()->back();
     }
 }

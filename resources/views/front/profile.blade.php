@@ -3,7 +3,7 @@
 @section('body')
 
 	<div class="card-header">
-	<span>Info Usuario</span>
+	<span>Perfil de usuario</span>
 </div>
 <div class="row">
 	<div class="col-md-1">
@@ -14,7 +14,7 @@
 	<ul class="list-group">
 		<li class="list-group-item"><label>Nombre: {{$user->name_user}}</label></li>
 		<li class="list-group-item"><label>Email: {{$user->email_user}}</label></li>
-		<li class="list-group-item"><label>Tipo de Usuario: {{$user->name_user}}</label></li>
+		<li class="list-group-item"><label>Tipo de Usuario: {{$user->type_user}}</label></li>
 	</ul>
 </div>
 </div>

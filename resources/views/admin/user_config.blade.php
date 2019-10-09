@@ -14,7 +14,7 @@
 		<li class="list-group-item"><label>Email: {{$user->email_user}}</label></li>
 		<li class="list-group-item"><label>Tipo de Usuario: {{$user->type_user}}</label></li>
 	</ul>
-	<a href=""><span class="btn btn-primary">Modificar Datos</span></a>
+	<a href="{{route('modify_profile',$user->id_user)}}"><span class="btn btn-primary">Modificar Datos</span></a>
 
 	<form method="post" action="{{route('update_avatar',$user->id_user)}}" enctype="multipart/form-data">
 		{{ csrf_field() }}
@@ -26,7 +26,7 @@
 		
 			 
 		<input class="" type="file" name="avatar" required>
-		<a href=""><button type="submit" class="btn btn-warning">Modificar Imagen</button></a>	
+		<button type="submit" class="btn btn-warning">Modificar Imagen</button>
 	</form>
 	
 </div>

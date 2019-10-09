@@ -10,7 +10,7 @@ class tag_controller extends Controller
 {
     public function store($array)
     {
-    	$tag_list = Tag::All();
+    	/*$tag_list = Tag::All();
     	foreach($array as $tag)
     	{
 	    	if(!in_array($tag,$tag_list))
@@ -19,7 +19,18 @@ class tag_controller extends Controller
 	    		$tag->name_tag = $array;
 	    		$tag->save();
 	    	}    	
-	    }	
+		}*/
+		foreach($array as $arr)
+		{
+			$tag = Tag::where('name_tag',$arr)->first();
+			if(!isset($tag))
+			{
+				$tg = new Tag();
+	    		$tg->name_tag = $array;
+	    		$tg->save();
+			}
+		}
+		
     }
 
     public function show($id)
