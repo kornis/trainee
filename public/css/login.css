@@ -1,0 +1,68 @@
+    body
+    {
+        background-color:#76979E;
+    }
+
+    .banner
+    {
+        height: 100px;
+        background-color: blanchedalmond;
+        color: #76979E;
+        font-size: 60px;
+    }
+
+    .login-content
+    {
+        position: relative;
+        align-content: center;
+    }
+
+    .login-cont
+    {
+        position: relative;
+        background-color:#FFFFFF;
+        box-shadow:10px 10px 35px 0px rgba(0,0,0,0.75);
+    }
+
+    .login-image
+    {
+        position: relative;
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
+        border-radius: 50%;
+        height: 9em;
+        width: 9em;
+        top:50px;
+        z-index: 10;
+      
+    }
+
+
+
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) 
+{
+
+    .login-container
+    {
+        margin-top: 30%;
+    }
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) 
+{ }
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) 
+{ }
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{ }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) 
+{ }

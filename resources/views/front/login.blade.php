@@ -1,7 +1,9 @@
 @extends('front.template')
-
+@section('css')
+	<link rel="stylesheet" href="{{asset('css/login.css')}}">
+@endsection
 @section('title','INGRESAR')
-
+{{-- 
 @section('top')
 <h5><strong>PROYECTO SLACK-TRAINEE</strong></h5>
 @endsection
@@ -34,7 +36,71 @@
 
 @endsection 
 
+--}}
+@section('body')
 
+<div class="row">
+<div class="banner col-md-12 col-sm-12">
+	PROYECTO ESTILO BLOG
+</div>
+</div>
+
+<div class="container login-container">
+	 <div class="row">
+		<div class="col-md-3 col-xs-1">
+		</div>
+		
+		<div class="col-md-6 col-xs-10 login-content">
+					
+					<img src="{{asset('avatars/default.png')}}" class="login-image">
+		</div>		
+				<div class="col-md-3  col-xs-1">
+				</div>
+		
+	</div>
+
+	<div class="row login-content">
+		<div class="col-md-3 col-xs-0">
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="login-cont">
+
+			{{--	<div class="row">
+						<div class="col-md-3 col-xs-0">
+							</div>
+							<div class="col-md-6 col-xs-12">
+						<img src="{{asset('avatars/default.png')}}" class="login-image">
+							</div>
+						<div class="col-md-3 col-xs-0">
+							</div>
+				</div>
+				--}}
+
+				<form method="post" class="text-center" action="" style="padding:60px 30px 5px 30px; ">
+					<span >LOG IN</span>
+					<div class="form-group">
+						<input type="email" class="form-control" placeholder="Ingrese Email" required>
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Contraseña" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<span type="submit" class="form-control btn btn-primary">Iniciar Sesion</span>
+					</div>
+				</form>
+				<div class="forgot " style="position:relative; background-color:#42B18E; padding:18px 10px 18px 10px;text-align:center">
+					<small style="color: whitesmoke">Olvidó su contraseña? <a href="#">click aquí...</a></small>
+				</div>
+			</div>	
+		</div>
+	<div class="col-md-3 col-xs-0">
+	</div>		
+	</div>	
+</div>
+
+
+
+@endsection
 
 
 

@@ -78,6 +78,9 @@ Route::post('/post-creado',['as'=>'store_post','uses'=>'post_controller@store'])
 
 Route::get('/view/{id}',['as'=>'view_post','uses'=>'front_controller@singlePost']);
 
+Route::get('/post-by-topic/{id}',['uses'=>'topic_controller@show','as'=>'postByTopic']);
+
+Route::get('/post-by-tag/{id}',['uses'=>'tag_controller@show','as'=>'postByTags']);
 
 
 
@@ -93,11 +96,11 @@ Route::get('/edit-comment/{id}',['as'=>'edit_comment','uses'=>'comment_controlle
 
 
 
-Route::resource('/topic','topic_controller',['only'=>['create','store','show']])->middleware('checkLogin');
+Route::resource('/topic','topic_controller',['only'=>['create','store']])->middleware('checkLogin');
 
 
 
-Route::resource('/tags','tag_controller',['only'=>['create','store','show']])->middleware('checkLogin');
+Route::resource('/tags','tag_controller',['only'=>['create','store']])->middleware('checkLogin');
 
 
 

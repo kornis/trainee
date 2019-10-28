@@ -17,3 +17,5 @@ use Illuminate\Http\Request;
 Route::get('/users', 'user_controller@api_getUsers');
 
 Route::get('/posts','post_controller@api_getPosts');
+
+Route::get('/post/{id}','post_controller@api_getSinglePost');

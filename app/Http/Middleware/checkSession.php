@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class checkSession
@@ -15,7 +15,7 @@ class checkSession
      */
     public function handle($request, Closure $next)
     {
-        if(session('user')=="")
+        if(!Auth::user())
         {
             //return abort(401);
             return redirect()->route('login');

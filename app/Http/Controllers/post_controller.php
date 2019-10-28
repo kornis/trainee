@@ -7,6 +7,8 @@ use App\Article;
 use App\User;
 use App\Topic;
 use App\Tag;
+use App\Comment;
+
 
 class post_controller extends Controller
 {
@@ -22,9 +24,49 @@ class post_controller extends Controller
 
 public function api_getPosts()
 {
-    $var = Article::join('tb_users','tb_articles.user_id','=','tb_users.id_user')->join('tb_comments','tb_articles.id_article','=','tb_comments.article_id')->select('title_article','content_article','name_user','title_comment','content_comment')->get();
-    $posts = json_encode($var);
-    return $posts;
+    $articles = Article::join('tb_users','tb_articles.user_id','=','tb_users.id_user')
+    ->join('tb_topics','tb_articles.topic_id','=','tb_topics.id_topic')
+    ->select('id_article','title_article','content_article','id_user','name_user','id_topic','name_topic')->get();
+   if(isset($articles))
+   {
+    $tags = Tag::All();
+    $topics = Topic::All();
+    $values = array('Articles'=>$articles,'Topics'=>$topics,'Tags'=>$tags);
+    return response()->json([$values],200);
+   }
+   else
+   {
+       return response()->json(['message'=>'No se ha podido acceder, en caso de continuar el error, enviar email a fedegarcia222@gmail.com'],404);
+   }
+
+}
+
+public function api_createPost(Request $request)
+{
+    
+}
+
+
+//funcion (api) que retorna un post segun el id enviado por get
+
+public function api_getSinglePost($id_post)
+{
+    $var = Article::where('id_article',$id_post)
+    ->join('tb_users','tb_articles.user_id','=','tb_users.id_user')
+    ->join('tb_topics','tb_articles.topic_id','=','tb_topics.id_topic')
+    ->select('id_article','title_article','content_article','id_user','name_user','email_user','type_user','name_topic')->first(); 
+    if(isset($var))
+    {
+        $tags = Tag::join('tb_article_tag','tb_article_tag.tag_id','=','tb_tags.id_tag')->select('name_tag')->where('tb_article_tag.article_id',$var->id_article)->get();
+        $comments = Comment::where('article_id',$var->id_article)->join('tb_users','id_user','=','user_id')->select('tb_comments.*','tb_users.name_user','tb_users.type_user')->get();
+        $post = array('Article'=>$var,'Comments'=>$comments,'Tags'=>$tags);
+        return response()->json([$post],200);
+    }
+    else
+    {
+        return response()->json(['message'=>'Error, no encontrado'],402);
+    }
+
 }
 
 
@@ -66,10 +108,14 @@ public function api_getPosts()
     	return redirect()->route('posts');
     }
 
+
+
     public function index()
     {
-    	$posts = Article::orderBy('updated_at','desc')->get();
-        
+        $posts = Article::orderBy('updated_at','desc')->get();
+       
+        $hola = anteriorDelTriple(6);
+
         
     	return view('front.posts')->with('posts',$posts);
     }

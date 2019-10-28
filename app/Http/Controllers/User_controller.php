@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+
 
 class User_controller extends Controller
 {
@@ -20,10 +22,18 @@ class User_controller extends Controller
 
 public function api_getUsers()
 {
-    $users = User::select('name_user','email_user','ban','type_user')->get();
+    $users = User::select('id_user','name_user','email_user','ban','type_user')->get();
+    if($users)
+    {
+        
+        return response()->json([$users],200);
+    }
+    else
+    {
+        return response()->json([
+            'message' => 'Page Not Found. If error persists, contact fedegarcia222@gmail.com'], 404);
+    }
 
-    $var = json_encode($users);
-    return $users;
 }
 
 
@@ -32,7 +42,7 @@ public function api_getUsers()
     {
         $error = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Usuario y/o contraseña erroneos</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';  
         $banned = '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Usuario Bloqueado temporalmente...</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-        $user = User::where('email_user',$request->email)->first();
+        /*$user = User::where('email_user',$request->email)->first();
       
             if(isset($user))
             {
@@ -53,6 +63,20 @@ public function api_getUsers()
                 }
             }
             else
+                {
+                    
+                }*/
+
+                $email = $request->email;
+                $password = $request->password;
+                $credentials['email_user'] = $request->email;
+                $credentials['password'] = $request->password;
+                $credentials['ban'] = false;
+                if(Auth::attempt($credentials))
+                {
+                    return redirect()->route('/posts');
+                }
+                else
                 {
                     return view('front.login')->with('success',$error);
                 }
@@ -196,7 +220,7 @@ public function api_getUsers()
     //funcion para salir de sesion
     public function logout()
     {
-        session(['user'=>'']);
+        Auth::logout();
         return view('front.login');
     }
 }

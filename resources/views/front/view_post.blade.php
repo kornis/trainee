@@ -18,8 +18,8 @@
 <div class="card">
 	<div class="card-body">
 	 
-		@if(session('user')!='') 
-		@if(session('user')->type_user == "Admin" || session('user')->type_user == "Miembro" || session('user')->type_user == "Moderador" ) 
+		@if(Auth::user()) 
+		@if(Auth::user()->type_user == "Admin" || Auth::user()->type_user == "Miembro" || Auth::user()->type_user == "Moderador" ) 
 		
 		
 <form method="post" action="{{action('comment_controller@store',$post->id_article)}}">
@@ -34,13 +34,14 @@
   <button type="submit" class="btn btn-success">ENVIAR COMENTARIO</button>
 </form>
 		
+
+
+@endif
 @else
 
 	<div class="">
 		<span>Para poder comentar debe iniciar sesión.  <a href="{{route('login')}}"><span class="btn btn-primary">Iniciar Sesion</span></a></span>
 	</div>
-
-@endif
 @endif
 </div>
 </div>
