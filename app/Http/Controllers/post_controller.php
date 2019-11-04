@@ -113,8 +113,6 @@ public function api_getSinglePost($id_post)
     public function index()
     {
         $posts = Article::orderBy('updated_at','desc')->get();
-       
-        $hola = anteriorDelTriple(6);
 
         
     	return view('front.posts')->with('posts',$posts);

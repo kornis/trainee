@@ -11,6 +11,7 @@ use App\User;
 class User_controller extends Controller
 {
  
+
 //pantalla para mostrar la pagina de inicio. 
     public function index()
     {
@@ -67,14 +68,14 @@ public function api_getUsers()
                     
                 }*/
 
-                $email = $request->email;
+                $email = $request->email; 
                 $password = $request->password;
                 $credentials['email_user'] = $request->email;
-                $credentials['password'] = $request->password;
+                $credentials['password_user'] = $request->password;
                 $credentials['ban'] = false;
-                if(Auth::attempt($credentials))
+                if(Auth::attempt(array('email_user'=> $credentials['email_user'], 'password_user'=>$credentials['password_user'])))
                 {
-                    return redirect()->route('/posts');
+                    return redirect()->route('/');
                 }
                 else
                 {

@@ -27,10 +27,10 @@ class User extends Authenticatable
         'password_user', 'remember_token',
     ];
 
-    public function getAuthPassword()
-{
-    return $this->password_user;
-}
+    public function getAuthPassword() {
+        return $this->password_user;
+    }
+
  
  public function articles()
  {

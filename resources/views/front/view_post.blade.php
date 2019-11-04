@@ -59,14 +59,15 @@
 	@endif
 	<span> - Título: {{$comment->title_comment}}</span>
 	<span style="float: right;"> Comentado: {{$comment->created_at}}</span>
-	<span style="float: right;"> @if(session('user')!='')
-	@if(session('user')->id_user == $comment->user_id || session('user')->type_user == 'Admin' || session('user')->type_user == 'Moderador')
+	<span style="float: right;"> @if(Auth::user())
+	@if(Auth::user()->id_user == $comment->user_id || Auth::user()->type_user == 'Admin' || Auth::user()->type_user == 'Moderador')
 	
 		<a href="{{route('edit_comment',$comment->id_comment)}}"><span class="badge badge-primary">Editar</span></a>
 		<a href="{{route('delete_comment',$comment->id_comment)}}"><span class="badge badge-danger">Eliminar</span></a>
 	
 	</span>
 	@endif @endif 
+	
 	</div>
 	<div class="card-body">
 		{{$comment->content_comment}}
@@ -75,3 +76,4 @@
 
 @endforeach
 @endsection
+

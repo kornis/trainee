@@ -1,14 +1,27 @@
+    *
+    {
+        margin: 0;
+        padding: 0;
+    }
+    
     body
     {
-        background-color:#76979E;
+        background-color:#C0C1CD;
     }
 
     .banner
     {
-        height: 100px;
-        background-color: blanchedalmond;
-        color: #76979E;
-        font-size: 60px;
+        height: 50px;
+        color: #C0C1CD;
+        background-color: #31335A;
+        font-size: 15px;
+    }
+
+    .banner>span
+    {
+        position: relative;
+        display: block;
+        padding: 10px 5px 0px 20px;
     }
 
     .login-content
