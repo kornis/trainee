@@ -75,7 +75,7 @@ public function api_getUsers()
                 $credentials['ban'] = false;
                 if(Auth::attempt(array('email_user'=> $credentials['email_user'], 'password_user'=>$credentials['password_user'])))
                 {
-                    return redirect()->route('/');
+                    return redirect()->route('posts');
                 }
                 else
                 {

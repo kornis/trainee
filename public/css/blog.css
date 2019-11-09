@@ -1,0 +1,79 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background-color:#C0C1CD;
+}
+
+.buttons
+{
+    text-align: center;
+    
+}
+
+
+
+.sub-menu
+{
+    position: relative;
+    background-color: #E3E3F8;
+    width: 100%;
+    padding: 5px 20px 5px 20px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.buttons>a>span
+{
+    padding:3px 10px;
+}
+
+.banner
+{
+    height: 50px;
+    color: #C0C1CD;
+    background-color: #31335A;
+    font-size: 15px;
+   
+    padding: 10px 40px 0px 40px;
+}
+
+.banner>span
+{
+    position: relative;
+    display: inline-block;
+}
+
+.card-body
+{
+    background-color: #FFFFFF;
+}
+
+.postline
+{
+    padding: 20px 45px 20px 45px;
+    margin-bottom: 5px;
+    background-color: rgb(227, 227, 248);
+}
+
+.card-header
+{
+    color: #ABC1AF;
+    background-color: #31335A !important;
+    padding-bottom: 0;
+}
+
+.list-group
+{
+    background-color: rgb(227, 227, 248);
+}
+
+.item-background
+{
+    background-color: rgb(227, 227, 248);
+
+}

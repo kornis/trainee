@@ -9,7 +9,7 @@
 @section('body')
 
 <div class="card-header">
-	TITULO: {{$post->title_article}}
+	<strong>TITULO:</strong> {{$post->title_article}}
 </div>
 <div class="card-body">
 	{{$post->content_article}}
@@ -25,7 +25,7 @@
 <form method="post" action="{{action('comment_controller@store',$post->id_article)}}">
 	{{ csrf_field() }}
   <div class="form-group">
-  	<label for="title_comment">TITULO COMENTARIO:</label>
+  	<label for="title_comment"><strong>TITULO COMENTARIO:</strong></label>
   	<input type="text" name="title_comment" class="form-control">
   </div>
   <div class="form-group">
@@ -50,7 +50,7 @@
 @foreach ($comments as $comment)
 <div class="card">
 	<div class="card-header">
-	<span>Comentario de: <a href="{{route('view_user',$comment->user_id)}}"> {{$comment->name_user}}</strong></a></span>
+	<span><strong>Comentario de: </strong><a href="{{route('view_user',$comment->user_id)}}"> {{$comment->name_user}}</strong></a></span>
 	@if($comment->type_user == 'Admin')
 	<span class="badge badge-danger">Admin</span>
 	@endif

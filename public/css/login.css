@@ -9,6 +9,11 @@
         background-color:#C0C1CD;
     }
 
+    .buttons
+    {
+        display: inline-block;
+    }
+
     .banner
     {
         height: 50px;
@@ -20,7 +25,7 @@
     .banner>span
     {
         position: relative;
-        display: block;
+        display: inline-block;
         padding: 10px 5px 0px 20px;
     }
 

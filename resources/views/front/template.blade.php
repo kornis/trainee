@@ -3,26 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{{asset('css/blog.css')}}">
 	@yield('css')
 	<title>@yield('title','default') | Proyecto Trainee</title>
 </head>
 <body>
-@yield('body')
-{{-- @yield('top')
-
-<div class="card">
-@yield('body')
-</div>
-@yield('bottom')
-
-
-<div class="row">
-	<div class="col-xs-12 footer">
-	</div>
-</div>
---}}
-
-
+	<div class="row">
+		<div class="banner col-md-12 col-sm-12">
+			<span>PROYECTO ESTILO BLOG</span>
+			
+		</div>
+		<div class="sub-menu">
+				@include('front.partials.buttons')
+		</div>
+		</div>	
+	@yield('body')
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
