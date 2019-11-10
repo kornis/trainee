@@ -1,5 +1,5 @@
 <div class="buttons">
-<a href="{{route('posts')}}"><span class="">INICIO</span></a>
+<a href="{{route('posts')}}"><span class="">Inicio</span></a>
 @if (Auth::user())
 <a href="{{action('post_controller@create')}}"><span class="">Crear Posteo</span></a>
 @if(Auth::user()->type_user == 'Admin'|| Auth::user()->type_user == 'Moderador' )
@@ -9,12 +9,12 @@
 @if (Auth::user()->type_user == 'Admin')
 	<a href="{{route('admin_users')}}"><span class="">Administrar</span></a>
 @endif
-<a href="{{action('User_controller@logout')}}"><span class="">DESLOGUEARSE</span></a>
+<a href="{{action('User_controller@logout')}}"><span class="">Desloguearse</span></a>
 @endif
 
 
 @if (!Auth::user())
-	<a href="{{route('login')}}"><span class="">INICIAR SESION</span></a>
+	<a href="{{route('login')}}"><span class="">Iniciar Sesion</span></a>
 @endif
 
 </div>

@@ -3,7 +3,7 @@
 	
 		
 		<div class="card" style="border: 0">
-			<div class="card-header">
+			<div class="card-header titles">
 				<p>TOPICS</p>
 			</div>
 			{{-- <div class="card-body"> --}}
@@ -23,7 +23,7 @@
 
 		
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header titles">
 				<p>TAGS</p>
 			</div>
 			<div class="card-body item-background">

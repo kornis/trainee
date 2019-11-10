@@ -12,7 +12,7 @@
 <div class="container">
 <div class="row">
 <div class="col-md-9">
-<div class="card-header">
+<div class="card-header titles">
 	<p>Ultimos posteos<span> @if (isset($tag))
 		- Segun TAG: {{$tag->name_tag}}
 	@endif

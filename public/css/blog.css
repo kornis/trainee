@@ -14,8 +14,20 @@ body
     text-align: center;
     
 }
+.datos-user
+{
+    font-size: 13px;
+    padding: 10px 15px 10px 20px;
+}
+.datos-user>span
+{
+    display: block;
+}
 
-
+.cont
+{
+    padding: 10px;
+}
 
 .sub-menu
 {
@@ -60,11 +72,26 @@ body
     background-color: rgb(227, 227, 248);
 }
 
-.card-header
+.titles
 {
+    
     color: #ABC1AF;
     background-color: #31335A !important;
     padding-bottom: 0;
+    padding: 12px 20px 0px 20px;
+    
+}
+.titles>p
+{
+    display: inline-block;
+}
+
+
+.cont-post
+{
+    position: relative;
+    background-color: rgb(227, 227, 248);
+    margin-bottom: 15px;
 }
 
 .list-group
@@ -76,4 +103,9 @@ body
 {
     background-color: rgb(227, 227, 248);
 
+}
+
+#title-comment
+{
+    font-size: 12px;
 }
